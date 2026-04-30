@@ -1,0 +1,233 @@
+{
+	"header": {
+		"title": "Card Component Unification Assessment",
+		"subtitle": "Discover the need for shared components through practical refactoring"
+	},
+	"challenge": {
+		"title": "The Challenge",
+		"description": "You work for TechStore, an e-commerce webshop selling technology products. The marketing team wants to launch a blog to attract more visitors with content about tech tips and best practices. Your component library needs to display users and products, but now it must also display posts. Currently, you have two card components that do similar things but are implemented completely differently—a problem that only gets worse as you add more components.",
+		"problem": "The Problem",
+		"problemItems": [
+			"UserCard and ProductCard are designed differently on purpose, with different styling approaches, class names, and markup patterns",
+			"Adding a third card type (PostCard) means copying even more duplicated code",
+			"Future changes to card styling require updates in multiple files in multiple places",
+			"Maintaining style consistency across all cards becomes error-prone and doesn't scale"
+		],
+		"tasksTitle": "Your Tasks",
+		"tasks": [
+			{
+				"title": "Task 1: Create a PostCard component for TechStore's blog",
+				"description": "Implement src/components/PostCard/PostCard.tsx with all required fields from the user story: title, author, publication date, content, likes, and publication status. Use the shared Button component for likes. This is essential for TechStore's blogging strategy."
+			},
+			{
+				"title": "Task 2: Extract a shared Card component",
+				"description": "Recognize that UserCard, ProductCard, and PostCard all share the same structure. Create src/shared/Card/Card.tsx—a headless, reusable Card component that handles layout (header, body, footer) without dictating content. This becomes the foundation for all future cards."
+			},
+			{
+				"title": "Task 3: Refactor all cards to use Card",
+				"description": "Update UserCard, ProductCard, and PostCard to use the shared Card component. Each retains its own data fetching and business logic, but they now share the same underlying structure. This reduces duplication and improves maintainability."
+			},
+			{
+				"title": "Task 4: Write tests proving reusability",
+				"description": "Add tests to src/shared/Card/Card.test.tsx proving that Card works with every entity type—Users, Products, and Posts. This validates that your abstraction truly works. Goal: 11 tests passing (5 UserCard + 3 ProductCard + 3 Card)."
+			}
+		]
+	},
+	"userStory": {
+		"title": "User Story: Create PostCard Component for TechStore",
+		"asA": "As a TechStore engineer",
+		"iWantTo": "I want to create a PostCard component that displays blog posts",
+		"soThat": "So that we can integrate blog content and prove our component library scales to all content types",
+		"acceptanceCriteria": "Acceptance Criteria",
+		"displayPostInfo": {
+			"title": "✅ Display Post Information",
+			"items": [
+				"**Title** (large, prominent) — Location: Card header/top — Example: 'Getting Started with React Hooks'",
+				"**Author** (secondary info) — Location: Card header, near title or below it — Example: 'by Sarah Chen'",
+				"**Publication Date** (formatted) — Location: Card header or metadata area — Format: Human-readable date (e.g., 'March 15, 2024')",
+				"**Content** (body) — Location: Card body/main area — Display: The full post content",
+				"**Likes Count** (engagement metric) — Location: Card footer or near likes — Format: Show number of likes (e.g., '456 likes')",
+				"**Publication Status** (optional visual indicator) — Location: Card header or badge area — Show: 'Published' badge only if published === true, otherwise visually distinct"
+			]
+		},
+		"interactivity": {
+			"title": "✅ Interactivity (Like Button)",
+			"items": [
+				"**Like Button** — Location: Card footer — Behavior: Click to increment likes count — API Call: PUT /api/posts/{id} with new likes count — Visual Feedback: Button should show updated like count after save"
+			]
+		},
+		"componentStructure": {
+			"title": "✅ Component Structure",
+			"items": [
+				"Use the shared Button component for the 'Like' action",
+				"Fetch post data from /api/posts/{postId} on mount",
+				"Handle loading and error states",
+				"Use the translation system for all user-facing text"
+			]
+		},
+		"layoutIntegration": {
+			"title": "✅ Layout Integration",
+			"items": [
+				"Should work seamlessly in ProductGrid or similar grid layout",
+				"Cards should be roughly equal height when displayed in grids (even with varying content lengths)",
+				"Should respect the shared Grid component's responsive behavior"
+			]
+		},
+		"mockDataAvailable": "Mock Data Available",
+		"mockDataDesc": "5 posts are available in src/mock/posts.ts:",
+		"mockDataTable": [
+			"ID: 1 | Title: Getting Started with React Hooks | Author: Sarah Chen | Published: ✓ | Likes: 324",
+			"ID: 2 | Title: Best Practices for Component Design | Author: Marco Rivera | Published: ✓ | Likes: 187",
+			"ID: 3 | Title: CSS Grid vs Flexbox: When to Use Each | Author: Elena Kowalski | Published: ✓ | Likes: 456",
+			"ID: 4 | Title: Testing React Components Effectively | Author: James Wilson | Published: ✓ | Likes: 92",
+			"ID: 5 | Title: The Future of Web Development | Author: Priya Patel | Published: ✗ | Likes: 0"
+		],
+		"fileStructure": {
+			"title": "File Structure",
+			"path": "src/components/PostCard/",
+			"files": ["PostCard.tsx", "PostCard.test.tsx (optional, but recommended)"]
+		},
+		"componentProps": {
+			"title": "Component Props",
+			"definition": "interface PostCardProps { postId: number; }"
+		},
+		"suggestedLayout": "Suggested Card Layout",
+		"layoutDiagram": "┌─────────────────────────────────┐\n│ Title (prominent)               │\n│ by Author | Published Badge     │  ← Header\n├─────────────────────────────────┤\n│                                 │\n│ Post content/body text...       │  ← Body\n│ (can be multi-line)             │\n│                                 │\n├─────────────────────────────────┤\n│ 456 likes    [Like Button]      │  ← Footer/Actions\n└─────────────────────────────────┘",
+		"validationChecklist": "Validation",
+		"validationItems": [
+			"✅ It displays all post fields correctly",
+			"✅ The Like button increments the count and calls the API",
+			"✅ Loading and error states are handled",
+			"✅ It works alongside UserCard and ProductCard in the same grid layout",
+			"✅ Translations work for both Dutch and English",
+			"✅ Tests pass (if you write them)"
+		],
+		"validation": "How This Validates Your Refactoring",
+		"validationDesc": "Creating PostCard proves:\n\n1. **Reusability**: You can apply the same Button component to different entity types\n2. **Flexibility**: Different card types (User, Product, Post) all work together\n3. **Pattern Recognition**: You've identified what's common (structure, styling) vs. what's specific (data, business logic)\n\nThis is exactly what the shared Card component should enable—write once, use everywhere."
+	},
+	"currentState": {
+		"title": "Current State: The Cards",
+		"description": "Below you can see the two existing cards side-by-side. Notice the styling differences, the markup patterns, and how they handle similar concepts (loading, editing, displaying data).",
+		"userCard": "UserCard (Design A)",
+		"userCardNote": "Custom BEM-style class names, specific spacing and styling approach",
+		"productCard": "ProductCard (Design B)",
+		"productCardNote": "Different class naming, different border and spacing approach",
+		"postCard": "PostCard (To Be Created)",
+		"postCardNote": "What styling should this have? The problem will become obvious once you create it.",
+		"placeholder": "You need to create this component"
+	},
+	"dataGlance": {
+		"title": "All Data at a Glance",
+		"description": "Below are grids showing all mock data. This makes it easy to see the styling inconsistency and test different state combinations (e.g., multiple users, different stock levels)."
+	},
+	"codeOrganization": {
+		"title": "How the Code Is Organized",
+		"beforeComponents": "Before Components (What You're Starting With)",
+		"userCardFile": "User card reference implementation",
+		"productCardFile": "Product card reference implementation",
+		"userCardTest": "Example tests showing how to test components with mocked API calls",
+		"productCardTest": "Example tests for ProductCard",
+		"mockData": "Mock Data & API",
+		"usersFile": "4 mock users (2 admin, 2 regular users)",
+		"productsFile": "5 mock products with various stock levels",
+		"apiFile": "Global fetch interceptor that returns mock data with 500ms delay",
+		"whereYouAdd": "Where You'll Add Your Code",
+		"cardComponent": "Your new shared, headless Card component",
+		"cardTest": "Tests proving Card works with different entity types",
+		"postCardComponent": "Your new post card using the shared Card",
+		"cardStyles": "Your unified card styling",
+		"userCardRefactored": "Refactored UserCard using the shared Card",
+		"productCardRefactored": "Refactored ProductCard using the shared Card"
+	},
+	"running": {
+		"title": "Running the Assessment",
+		"devServer": "Development Server",
+		"devServerDesc": "Start the dev server to see the components rendered with mock data. The mock API is automatically set up.",
+		"runTests": "Run Tests",
+		"runTestsDesc": "The example tests (UserCard.before.test.tsx and ProductCard.before.test.tsx) show how to test components with mocked API calls. Use them as a reference for testing your shared Card.",
+		"linting": "Linting & Formatting",
+		"lintingDesc": "The project follows Airbnb style guides. Check and auto-fix issues with:"
+	},
+	"tips": {
+		"title": "Tips & Hints",
+		"lookPatterns": {
+			"title": "Look for patterns:",
+			"desc": "What do UserCard and ProductCard have in common? (Structure, not content)"
+		},
+		"separateConcerns": {
+			"title": "Separate concerns:",
+			"desc": "The Card component should handle layout; each specific card (UserCard, ProductCard, PostCard) should handle data and logic."
+		},
+		"useSlots": {
+			"title": "Use slots/children:",
+			"desc": "Instead of hard-coding content, let the Card accept children for its different sections (header, body, footer)."
+		},
+		"baseline": {
+			"title": "Baseline + Customization:",
+			"desc": "Define core styles in a base Card component or CSS class; let entity-specific cards add their own tweaks."
+		},
+		"testGeneric": {
+			"title": "Test generically:",
+			"desc": "Your Card tests should use different data structures to prove reusability, not just UserCard data."
+		},
+		"documentApi": {
+			"title": "Document your API:",
+			"desc": "Make it clear how to use the Card component. What props does it accept? What are the required sections?"
+		}
+	},
+	"questions": {
+		"title": "Questions to Ask Yourself",
+		"q1": "What would happen if you had 10 different card types using the original approach?",
+		"q2": "If a designer wants to change the corner radius on all cards, how many files would you need to edit?",
+		"q3": "Can the shared Card component be used for other components in the future (e.g., BlogCard, ReviewCard, etc.)?",
+		"q4": "Is your Card component flexible enough to handle different numbers of sections (some cards have footers, some don't)?"
+	},
+	"quickRef": {
+		"title": "Quick Reference",
+		"devServer": "Dev Server",
+		"runTests": "Run Tests",
+		"lintFormat": "Lint & Format",
+		"mockDebug": "Mock Data Debug",
+		"mockDebugDesc": "Open console and run"
+	},
+	"userCard": {
+		"loading": "Loading user...",
+		"error": "Error:",
+		"notFound": "User not found",
+		"email": "Email:",
+		"created": "Created:",
+		"admin": "Admin",
+		"save": "Save",
+		"cancel": "Cancel",
+		"edit": "Edit",
+		"onlyAdminsEdit": "Only admins can edit users",
+		"editUser": "Edit this user"
+	},
+	"productCard": {
+		"loading": "Loading product...",
+		"error": "Error:",
+		"notFound": "Product not found",
+		"stock": "Stock:",
+		"inStock": "in stock",
+		"soldOut": "Sold out",
+		"save": "Save",
+		"cancel": "Cancel",
+		"editStock": "Edit Stock"
+	},
+	"bonusChallenges": {
+		"title": "Bonus Challenges",
+		"subtitle": "After completing the main tasks, polish the UI with these styling improvements.",
+		"challenge1": {
+			"title": "Consistent Button Styling",
+			"problem": "The cancel button has a different visual style compared to the save button. They don't feel like a cohesive pair.",
+			"task": "Update Button.css so both primary and secondary variants feel visually balanced and intentional. Consider color, border, hover states, and visual hierarchy. If you think it necessary, you can also create a new variant (e.g., 'tertiary') for the cancel button.",
+			"hint": "Look at src/shared/Button/Button.css. Should the secondary button have more visual weight? Better contrast? Different hover behavior?"
+		},
+		"challenge2": {
+			"title": "Equal Height Grid Items",
+			"problem": "Grid items don't align evenly when cards have different content heights.",
+			"task": "Make all grid items the same height within a row. Cards should fill their grid cell consistently.",
+			"hint": "Look at src/shared/Grid/Grid.css and consider CSS Grid auto-rows or height: 100%."
+		}
+	}
+}

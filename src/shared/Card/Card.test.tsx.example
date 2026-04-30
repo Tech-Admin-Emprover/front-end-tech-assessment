@@ -1,0 +1,33 @@
+/*
+// Uncomment these tests when you've created your Card component
+// These tests show the minimum behavior your Card should support
+
+import { render, screen } from '@testing-library/react';
+import { Card } from './Card';
+
+describe('Card', () => {
+	it('should render children', () => {
+		render(<Card>Test Content</Card>);
+		expect(screen.getByText('Test Content')).toBeInTheDocument();
+	});
+
+	it('should accept custom className', () => {
+		const { container } = render(<Card className="custom-class">Content</Card>);
+		expect(container.querySelector('.custom-class')).toBeInTheDocument();
+	});
+
+	it('should render as a reusable container', () => {
+		const { container } = render(
+			<Card>
+				<div>Header</div>
+				<div>Body</div>
+				<div>Footer</div>
+			</Card>
+		);
+		expect(container.querySelector('.card')).toBeInTheDocument();
+		expect(screen.getByText('Header')).toBeInTheDocument();
+		expect(screen.getByText('Body')).toBeInTheDocument();
+		expect(screen.getByText('Footer')).toBeInTheDocument();
+	});
+});
+*/

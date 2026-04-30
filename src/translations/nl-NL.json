@@ -1,0 +1,233 @@
+{
+	"header": {
+		"title": "Card Component Unificatie Beoordeling",
+		"subtitle": "Ontdek de noodzaak voor gedeelde componenten door praktische refactoring"
+	},
+	"challenge": {
+		"title": "De Uitdaging",
+		"description": "Je werkt voor TechStore, een webshop die producten verkoopt. Het marketingteam wil graag een blog starten om meer bezoekers aan te trekken met content over tech tips en best practices. Je component library moet gebruikers en producten kunnen weergeven, maar nu moet je ook berichten kunnen weergeven. Op dit moment heb je twee kaart-componenten die vergelijkbare dingen doen maar volledig anders zijn geïmplementeerd—een probleem dat alleen erger wordt naarmate je meer componenten toevoegt.",
+		"problem": "Het Probleem",
+		"problemItems": [
+			"UserCard en ProductCard zijn opzettelijk anders ontworpen met verschillende styling benaderingen, class names en markup patronen",
+			"Een derde kaart type (PostCard) toevoegen betekent nog meer code duplicatie",
+			"Toekomstige wijzigingen aan card stijl vereisen updates in meerdere bestanden op meerdere plaatsen",
+			"Het onderhouden van stijl consistentie over alle kaarten wordt foutgevoelig en schaalt niet"
+		],
+		"tasksTitle": "Jouw Taken",
+		"tasks": [
+			{
+				"title": "Task 1: Maak een PostCard component voor TechStore blog",
+				"description": "Implementeer src/components/PostCard/PostCard.tsx met alle vereiste velden uit de user story: titel, auteur, publicatiedatum, inhoud, likes en publicatiestatus. Maak gebruik van de gedeelde Button component voor likes. Dit is essentieel voor TechStore's blogstrategie."
+			},
+			{
+				"title": "Task 2: Extraheer een gedeelde Card component",
+				"description": "Herken dat UserCard, ProductCard en PostCard dezelfde structuur delen. Maak src/shared/Card/Card.tsx—een koppelingloze, herbruikbare Card component die layout afhandelt (header, body, footer) zonder content voor te schrijven. Dit wordt de basis voor alle toekomstige cards."
+			},
+			{
+				"title": "Task 3: Refactor alle kaarten om Card te gebruiken",
+				"description": "Update UserCard, ProductCard en PostCard om de gedeelde Card component te gebruiken. Elk behoudt zijn eigen data-ophaling en bedrijfslogica, maar ze delen nu dezelfde onderliggende structuur. Dit vermindert duplicatie en verbetert onderhoudbaarheid."
+			},
+			{
+				"title": "Task 4: Schrijf tests die herbruikbaarheid bewijzen",
+				"description": "Voeg tests toe aan src/shared/Card/Card.test.tsx die bewijzen dat Card met elke entity type werkt—Users, Products, én Posts. Dit valideert dat je abstractie echt werkt. Doelstelling: 11 tests slagen (5 UserCard + 3 ProductCard + 3 Card)."
+			}
+		]
+	},
+	"userStory": {
+		"title": "Gebruikersverhaal: PostCard Component voor TechStore",
+		"asA": "Als TechStore engineer",
+		"iWantTo": "Wil ik een PostCard component aanmaken die blog berichten displayt",
+		"soThat": "Zodat we blog content kunnen integreren en bewijzen dat onze component library schaalbaar is voor alle content types",
+		"acceptanceCriteria": "Acceptatiecriteria",
+		"displayPostInfo": {
+			"title": "✅ Berichtinformatie Weergeven",
+			"items": [
+				"**Titel** (groot, prominent) — Location: Card header/top — Voorbeeld: 'Getting Started with React Hooks'",
+				"**Auteur** (secundaire info) — Location: Card header, dicht bij titel of eronder — Voorbeeld: 'by Sarah Chen'",
+				"**Publicatiedatum** (geformateerd) — Location: Card header of metagegevens — Format: Menselijk leesbare datum (bijv. '15 maart 2024')",
+				"**Berichtinhoud** (body) — Location: Card body/hoofdgebied — Display: De volledige berichtinhoud",
+				"**Aantal likes** (betrokkenheids metric) — Location: Card footer of dicht bij likes — Format: Laat aantal likes zien (bijv. '456 likes')",
+				"**Publicatiestatus** (optionele visuele indicator) — Location: Card header of badge — Show: 'Published' badge alleen als published === true, anders visueel onderscheiden"
+			]
+		},
+		"interactivity": {
+			"title": "✅ Interactiviteit (Like Button)",
+			"items": [
+				"**Like Button** — Locatie: Card footer — Gedrag: Klik om likes aantal te verhogen — API Call: PUT /api/posts/{id} met nieuw likes aantal — Visuele feedback: Button moet bijgewerkt likes aantal weergeven"
+			]
+		},
+		"componentStructure": {
+			"title": "✅ Component Structuur",
+			"items": [
+				"Gebruik de gedeelde Button component voor de 'Like' actie",
+				"Haal berichtdata op van /api/posts/{postId} bij mount",
+				"Behandel laad- en foutstaten",
+				"Gebruik het vertaalsysteem voor alle gebruikersgerichte tekst"
+			]
+		},
+		"layoutIntegration": {
+			"title": "✅ Layout Integratie",
+			"items": [
+				"Werkt naadloos in ProductGrid of soortgelijk roosterlay-out",
+				"Cards hebben ruwweg gelijke hoogte bij weergave in roosters (zelfs met variërende inhoudslengtes)",
+				"Respecteert het gedeelde Grid component's responsief gedrag"
+			]
+		},
+		"mockDataAvailable": "Mock Gegevens Beschikbaar",
+		"mockDataDesc": "5 berichten zijn beschikbaar in src/mock/posts.ts:",
+		"mockDataTable": [
+			"ID: 1 | Titel: Getting Started with React Hooks | Auteur: Sarah Chen | Gepubliceerd: ✓ | Likes: 324",
+			"ID: 2 | Titel: Best Practices for Component Design | Auteur: Marco Rivera | Gepubliceerd: ✓ | Likes: 187",
+			"ID: 3 | Titel: CSS Grid vs Flexbox: When to Use Each | Auteur: Elena Kowalski | Gepubliceerd: ✓ | Likes: 456",
+			"ID: 4 | Titel: Testing React Components Effectively | Auteur: James Wilson | Gepubliceerd: ✓ | Likes: 92",
+			"ID: 5 | Titel: The Future of Web Development | Auteur: Priya Patel | Gepubliceerd: ✗ | Likes: 0"
+		],
+		"fileStructure": {
+			"title": "Bestandsstructuur",
+			"path": "src/components/PostCard/",
+			"files": ["PostCard.tsx", "PostCard.test.tsx (optioneel, maar aanbevolen)"]
+		},
+		"componentProps": {
+			"title": "Component Props",
+			"definition": "interface PostCardProps { postId: number; }"
+		},
+		"suggestedLayout": "Voorgestelde Card Layout",
+		"layoutDiagram": "┌─────────────────────────────────┐\n│ Titel (prominent)               │\n│ by Auteur | Gepubliceerd Badge  │  ← Header\n├─────────────────────────────────┤\n│                                 │\n│ Berichtinhoud/body tekst...     │  ← Body\n│ (kan meerdere regels zijn)      │\n│                                 │\n├─────────────────────────────────┤\n│ 456 likes    [Like Button]      │  ← Footer/Acties\n└─────────────────────────────────┘",
+		"validationChecklist": "Validatie",
+		"validationItems": [
+			"✅ Het geeft alle berichtvelden correct weer",
+			"✅ De Like button verhoogt het aantal en roept de API aan",
+			"✅ Laad- en foutstaten worden afgehandeld",
+			"✅ Het werkt samen met UserCard en ProductCard in dezelfde roosterlay-out",
+			"✅ Vertalingen werken voor zowel Nederlands als Engels",
+			"✅ Tests slagen (als je ze schrijft)"
+		],
+		"validation": "Hoe Dit Je Refactoring Valideert",
+		"validationDesc": "Het maken van PostCard bewijst:\n\n1. **Herbruikbaarheid**: Je kunt dezelfde Button component op verschillende entity types toepassen\n2. **Flexibiliteit**: Verschillende kaarttypen (User, Product, Post) werken samen\n3. **Patroonherkenning**: Je hebt vastgesteld wat gemeenschappelijk is (structuur, ontwerp) versus wat specifiek is (gegevens, bedrijfslogica)\n\nDit is precies wat de gedeelde Card component zou moeten inschakelen—schrijf eenmaal, gebruik overal."
+	},
+	"currentState": {
+		"title": "Huidige Staat: De Kaarten",
+		"description": "Hieronder kun je de twee bestaande kaarten naast elkaar zien. Let op de stijl verschillen, de markup patronen en hoe ze vergelijkbare concepten afhandelen (laden, bewerken, data weergeven).",
+		"userCard": "UserCard (Design A)",
+		"userCardNote": "Aangepaste BEM-stijl klassenamen, specifieke afstand en stijl benadering",
+		"productCard": "ProductCard (Design B)",
+		"productCardNote": "Andere klassenaming, ander grens en afstand benadering",
+		"postCard": "PostCard (Nog aan te maken)",
+		"postCardNote": "Welke stijl zou dit moeten hebben?",
+		"placeholder": "Je moet deze component nog maken"
+	},
+	"dataGlance": {
+		"title": "Alle gegevens in één Oogopslag",
+		"description": "Hieronder staan grids met alle mock gegevens. Dit maakt het gemakkelijk om stijl inconsistentie te zien en verschillende status combinaties te testen (bijv. meerdere gebruikers, verschillende voorraadhoeveelheden)."
+	},
+	"codeOrganization": {
+		"title": "Hoe de Code Georganiseerd Is",
+		"beforeComponents": "Vorige Components (Waarmee je begint)",
+		"userCardFile": "User card referentie implementatie",
+		"productCardFile": "Product card referentie implementatie",
+		"userCardTest": "Voorbeeld tests die tonen hoe components met gemockte API calls kunnen worden getest",
+		"productCardTest": "Voorbeeld tests voor ProductCard",
+		"mockData": "Mock Data & API",
+		"usersFile": "4 mock users (2 admin, 2 reguliere users)",
+		"productsFile": "5 mock producten met verschillende stock niveaus",
+		"apiFile": "Globale fetch interceptor die mock data teruggeeft met 500ms vertraging",
+		"whereYouAdd": "Waar je je Code Toevoegt",
+		"cardComponent": "Je nieuwe gedeelde, headless Card component",
+		"cardTest": "Tests die bewijzen dat Card werkt met verschillende entity types",
+		"postCardComponent": "Je nieuwe post card die de gedeelde Card gebruikt",
+		"cardStyles": "Je uniforme card styling",
+		"userCardRefactored": "Gerefactorde UserCard die de gedeelde Card gebruikt",
+		"productCardRefactored": "Gerefactorde ProductCard die de gedeelde Card gebruikt"
+	},
+	"running": {
+		"title": "De Beoordeling Uitvoeren",
+		"devServer": "Development Server",
+		"devServerDesc": "Start de dev server om de components met mock data gerenderd te zien. De mock API is automatisch ingesteld.",
+		"runTests": "Tests Uitvoeren",
+		"runTestsDesc": "De voorbeeld tests (UserCard.test.tsx en ProductCard.test.tsx) laten zien hoe components met gemockte API calls kunnen worden getest. Gebruik ze als referentie voor het testen van je gedeelde Card.",
+		"linting": "Linting & Formatting",
+		"lintingDesc": "Het project volgt Airbnb style guides. Controleer en fix problemen automatisch met:"
+	},
+	"tips": {
+		"title": "Tips & Hints",
+		"lookPatterns": {
+			"title": "Zoek naar patterns:",
+			"desc": "Wat hebben UserCard en ProductCard gemeenschappelijk? (Structuur, niet content)"
+		},
+		"separateConcerns": {
+			"title": "Scheid concerns:",
+			"desc": "De Card component moet layout afhandelen; elke specifieke card (UserCard, ProductCard, PostCard) moet data en logica afhandelen."
+		},
+		"useSlots": {
+			"title": "Gebruik slots/children:",
+			"desc": "In plaats van content vast in te coderen, laat de Card children accepteren voor de verschillende secties (header, body, footer)."
+		},
+		"baseline": {
+			"title": "Baseline + Customization:",
+			"desc": "Definieer core styles in een base Card component of CSS class; laat entity-specifieke cards hun eigen aanpassingen toevoegen."
+		},
+		"testGeneric": {
+			"title": "Test generiek:",
+			"desc": "Je Card tests moeten verschillende data structuren gebruiken om herbruikbaarheid te bewijzen, niet alleen UserCard data."
+		},
+		"documentApi": {
+			"title": "Documenteer je API:",
+			"desc": "Maak duidelijk hoe je de Card component gebruikt. Welke props accepteert het? Wat zijn de verplichte secties?"
+		}
+	},
+	"questions": {
+		"title": "Vragen om jezelf af te vragen",
+		"q1": "Wat zou er gebeuren als je 10 verschillende card types had met de oorspronkelijke approach?",
+		"q2": "Als een designer de corner radius op alle cards wil wijzigen, in hoeveel bestanden zou je deze moeten updaten?",
+		"q3": "Kan de gedeelde Card component in de toekomst voor andere components worden gebruikt (bijv. BlogCard, ReviewCard, enz.)?",
+		"q4": "Is je Card component flexibel genoeg om verschillende aantallen secties af te handelen (sommige cards hebben footers, sommige niet)?"
+	},
+	"quickRef": {
+		"title": "Snelle Referentie",
+		"devServer": "Dev Server",
+		"runTests": "Tests Uitvoeren",
+		"lintFormat": "Lint & Format",
+		"mockDebug": "Mock Data Debug",
+		"mockDebugDesc": "Open console en voer uit"
+	},
+	"userCard": {
+		"loading": "Bezig met laden van gebruiker...",
+		"error": "Fout:",
+		"notFound": "Gebruiker niet gevonden",
+		"email": "E-mail:",
+		"created": "Gemaakt:",
+		"admin": "Beheerder",
+		"save": "Opslaan",
+		"cancel": "Annuleren",
+		"edit": "Bewerken",
+		"onlyAdminsEdit": "Alleen beheerders kunnen gebruikers bewerken",
+		"editUser": "Deze gebruiker bewerken"
+	},
+	"productCard": {
+		"loading": "Bezig met laden van product...",
+		"error": "Fout:",
+		"notFound": "Product niet gevonden",
+		"stock": "Voorraad:",
+		"inStock": "in voorraad",
+		"soldOut": "Uitverkocht",
+		"save": "Opslaan",
+		"cancel": "Annuleren",
+		"editStock": "Voorraad Bewerken"
+	},
+	"bonusChallenges": {
+		"title": "Bonus Uitdagingen",
+		"subtitle": "Na het voltooien van de hoofd taken, verfijn de UI met deze stijl verbeteringen.",
+		"challenge1": {
+			"title": "Consistente Knop Stijl",
+			"problem": "De annuleerknop heeft een ander visueel design vergeleken met de opslaanknop. Ze voelen niet als een samenhangende paar.",
+			"task": "Update Button.css zodat beide primaire en secundaire varianten visueel gebalanceerd en opzettelijk voelen. Beschouw kleur, grens, zweeftoestanden en visuele hiërarchie. Indien nodig, kun je ook een nieuwe variant maken (bijv. 'tertiary') voor de annuleerknop.",
+			"hint": "Kijk naar src/shared/Button/Button.css. Zou de secundaire knop meer visueel gewicht moeten hebben? Beter contrast? Andere hover interactie?"
+		},
+		"challenge2": {
+			"title": "Gelijke Hoogte Grid Items",
+			"problem": "Grid items lijnen niet evenredig uit als kaarten verschillende content hoogte hebben.",
+			"task": "Zorg dat alle grid items dezelfde hoogte hebben in een rij. Kaarten moeten hun grid cel consistent vullen.",
+			"hint": "Kijk naar src/shared/Grid/Grid.css en overweeg CSS Grid auto-rows of height: 100%."
+		}
+	}
+}
