@@ -3,6 +3,7 @@
 This is a tech assessment for junior front-end developers. The core challenge: you have multiple similar but differently-styled card components, and you must **create a new card type while unifying all styling** — discovering that a shared, headless Card component is the best solution (not told upfront).
 
 An AI agent should understand:
+
 - The **assessment goal** is to teach pattern recognition and component abstraction through practical necessity
 - The **starting point** is multiple "before" components: `UserCard` and `ProductCard` with different implementations and styling
 - The **success criterion** is a reusable Card component library approach: shared structure with customizable styling, tests validating reusability across entity types
@@ -12,10 +13,10 @@ An AI agent should understand:
 
 This assessment repo contains:
 
-- **`src/components/UserCard.before.tsx`** — User card with dark theme, edit name flow
-- **`src/components/ProductCard.before.tsx`** — Product card with light theme, edit stock flow
-- **`src/components/UserCard.before.test.tsx`** — Example tests for User card
-- **`src/components/ProductCard.before.test.tsx`** — Example tests for Product card
+- **`src/components/UserCard.tsx`** — User card with dark theme, edit name flow
+- **`src/components/ProductCard.tsx`** — Product card with light theme, edit stock flow
+- **`src/components/UserCard.test.tsx`** — Example tests for User card
+- **`src/components/ProductCard.test.tsx`** — Example tests for Product card
 - **`README.md`** — Detailed challenge description with multi-card scenario and success criteria
 - **Full React + TypeScript + Vite scaffold** — Ready to develop and test
 - **Vitest + React Testing Library** — Pre-configured for writing component and hook tests
@@ -24,18 +25,18 @@ This assessment repo contains:
 ## First actions for the agent (required)
 
 1. **Check for manifests:** Look for `package.json`, `yarn.lock`, `pnpm-lock.yaml`, `README.md`, and `vite.config.ts` (React project files).
-2. **Extract key info from `package.json`:** 
-   - React version and dependencies (hooks, context API usage)
-   - Build/dev commands (`npm run dev`, `npm run build`, `npm run test`)
-   - Linting/formatting config (ESLint, Prettier)
-3. **Understand the assessment structure:** 
-   - The "before" components: `src/components/UserCard.before.tsx` (dark theme) and `ProductCard.before.tsx` (light theme)
-   - Example tests: `UserCard.before.test.tsx` and `ProductCard.before.test.tsx` — shows test patterns for multiple card types
-   - Challenge docs: `README.md` — describes the multi-card unification task
-   - Display page: `src/App.tsx` — shows the three cards side-by-side to highlight inconsistency
+2. **Extract key info from `package.json`:**
+    - React version and dependencies (hooks, context API usage)
+    - Build/dev commands (`npm run dev`, `npm run build`, `npm run test`)
+    - Linting/formatting config (ESLint, Prettier)
+3. **Understand the assessment structure:**
+    - The "before" components: `src/components/UserCard.tsx` (dark theme) and `ProductCard.tsx` (light theme)
+    - Example tests: `UserCard.test.tsx` and `ProductCard.test.tsx` — shows test patterns for multiple card types
+    - Challenge docs: `README.md` — describes the multi-card unification task
+    - Display page: `src/App.tsx` — shows the full user story, challenge description, and the three cards side-by-side to highlight inconsistency
 4. **Ready to go:** Dependencies are configured; developer should run `npm install` then `npm test` to verify setup.## How to decide what to run or edit
 
-- Prefer reading top-level files and directories first (`src/`, `app/`, `web/`, `frontend/`, `backend/`).
+- Prefer reading top-level files and directories first (`src/`).
 - If `package.json` exists, use `npm run <script>` or the `scripts` entries rather than guessing commands. Look for `build`, `test`, `start`, `dev`.
 - If a `Makefile` or `README.md` exists, follow the documented commands there.
 
@@ -48,9 +49,9 @@ When helping a developer refactor the monolithic components:
 1. **Multi-component inconsistency** — Multiple cards (User, Product) that are similar in purpose but use different CSS classes, markup patterns, and styling approaches.
 2. **The "third card" trigger** — When asked to create PostCard, the developer should notice: "If I copy ProductCard or UserCard, I'm duplicating code. There must be a better way."
 3. **Target refactoring structure:**
-   - **Shared Card component** — Generic, headless UI that renders sections (header, body, footer) based on props
-   - **Baseline styling** — Common CSS with BEM naming or CSS modules, customizable via props/classes
-   - **Entity-specific integrations** — UserCard, ProductCard, PostCard each compose the shared Card with their own data
+    - **Shared Card component** — Generic, headless UI that renders sections (header, body, footer) based on props
+    - **Baseline styling** — Common CSS with BEM naming or CSS modules, customizable via props/classes
+    - **Entity-specific integrations** — UserCard, ProductCard, PostCard each compose the shared Card with their own data
 
 ### Specific hints for AI agents:
 
