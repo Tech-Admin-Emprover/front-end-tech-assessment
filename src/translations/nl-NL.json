@@ -34,24 +34,26 @@
 		]
 	},
 	"userStory": {
-		"title": "Gebruikersverhaal: Blog Functionaliteit voor TechStore",
+		"title": "User Story: Blog Functionaliteit voor TechStore",
+		"userStoryLabel": "User Story",
 		"businessContext": "TechStore's marketingteam wil blog content gebruiken als een SEO- en engagement-strategie. Door waardevolle tech tips en best practices te publiceren, verwachten ze meer organisch verkeer en langere sessieduur op de website.",
-		"overview": "We moeten een blog post weergavecomponent implementeren die past in ons bestaande component ecosystem (UserCard, ProductCard) zodat we blogs kunnen tonen op homepages, zijbalken en dedicated blog pagina's.",
+		"overview": "We moeten een blogpost weergavecomponent implementeren die past in ons bestaande component ecosystem (UserCard, ProductCard) zodat we blogs kunnen tonen op homepages, zijbalken en dedicated blogpagina's.",
 		"asA": "Als marketeer bij TechStore",
-		"iWantTo": "Wil ik blog posts kunnen weergeven met auteur, publicatiedatum en engagement metrics (likes)",
-		"soThat": "Zodat bezoekers blog content kunnen ontdekken en ermee kunnen interageren, wat helpt bij SEO en customer retention",
+		"iWantTo": "wil ik blogposts kunnen weergeven met auteur, publicatiedatum en engagement metrics (likes)",
+		"soThat": "zodat bezoekers blog content kunnen ontdekken en ermee kunnen interageren, wat helpt bij SEO en customer retention",
+		"whyThisMattersLabel": "Waarom Dit Belangrijk Is",
 		"whyThisMatters": "Blog content is een kernonderdeel van onze marketing funnel. Het helpt ons om:\n• Potentiële klanten in de awareness fase te bereiken\n• Vertrouwen op te bouwen door expertise te tonen\n• SEO-ranking te verbeteren via geregelde, waardevolle content\n• Community engagement te stimuleren via likes en comments",
-		"acceptanceCriteria": "Criteria voor Afronding",
+		"acceptanceCriteria": "Acceptatiecriteria",
 		"criteria": [
-			"Blog posts kunnen worden weergegeven met minimaal: titel, auteur, publicatiedatum, inhoud en like-count",
-			"Bezoekers kunnen posts leuk vinden (Like button) en dit wordt opgeslagen",
-			"Niet-gepubliceerde posts kunnen worden onderscheiden van gepubliceerde posts",
-			"De post component past visueel in de bestaande design samen met user en product components",
-			"Posts kunnen worden opgehaald van de backend API en errors worden netjes afgehandeld",
+			"Blogposts kunnen worden weergegeven met minimaal: titel, auteur, publicatiedatum, inhoud en like-count",
+			"Bezoekers kunnen posts leuk vinden (Like button) - de update hoeft niet naar een backend te gaan, alleen lokaal opgeslagen worden",
+			"Niet-gepubliceerde posts kunnen worden onderscheiden van gepubliceerde posts (bijv. via styling of badge)",
+			"De post component past visueel in het bestaande design samen met user en product components",
+			"Blogpost data kan worden geladen uit het mock systeem (src/mock/posts.ts)",
 			"Blog content werkt in beide talen (Nederlands en Engels)"
 		],
 		"mockData": "Test Data",
-		"mockDataDesc": "5 blog posts zijn beschikbaar in src/mock/posts.ts om mee te testen. Deze bevat posts in verschillende staten (gepubliceerd/ongepubliceerd) en met variërende engagement."
+		"mockDataDesc": "5 blogposts zijn beschikbaar in src/mock/posts.ts om mee te testen. Deze bevat posts in verschillende staten (gepubliceerd/ongepubliceerd) en met variërende engagement niveaus. Opmerking: je hoeft geen updates terug te sturen naar de backend - alles is lokaal."
 	},
 	"currentState": {
 		"title": "Huidige Staat: De Kaarten",

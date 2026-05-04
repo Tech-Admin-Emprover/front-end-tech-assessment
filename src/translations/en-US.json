@@ -35,23 +35,25 @@
 	},
 	"userStory": {
 		"title": "User Story: Blog Functionality for TechStore",
-		"businessContext": "TechStore's marketing team wants to use blog content as an SEO and engagement strategy. By publishing valuable tech tips and best practices, they expect to drive more organic traffic and increase session duration on the website.",
+		"userStoryLabel": "User Story",
+		"businessContext": "TechStore's marketing team wants to use blog content as an SEO and engagement strategy. By publishing valuable tech tips and best practices, they expect to increase organic traffic and session duration on the website.",
 		"overview": "We need to implement a blog post display component that fits into our existing component ecosystem (UserCard, ProductCard) so we can showcase blogs on homepages, sidebars, and dedicated blog pages.",
-		"asA": "As a marketer at TechStore",
+		"asA": "as a marketer at TechStore",
 		"iWantTo": "I want to display blog posts with author, publication date, and engagement metrics (likes)",
-		"soThat": "So that visitors can discover blog content and interact with it, which helps with SEO and customer retention",
-		"whyThisMatters": "Blog content is a core part of our marketing funnel. It helps us:\n• Reach potential customers in the awareness stage\n• Build trust by demonstrating expertise\n• Improve SEO rankings through regular, valuable content\n• Stimulate community engagement through likes and comments",
-		"acceptanceCriteria": "Definition of Done",
+		"soThat": "so that visitors can discover blog content and engage with it, helping with SEO and customer retention",
+		"whyThisMattersLabel": "Why This Matters",
+		"whyThisMatters": "Blog content is a core part of our marketing funnel. It helps us to:\n• Reach potential customers in the awareness phase\n• Build trust by demonstrating expertise\n• Improve SEO ranking through consistent, valuable content\n• Stimulate community engagement via likes and comments",
+		"acceptanceCriteria": "Acceptance Criteria",
 		"criteria": [
-			"Blog posts can be displayed with at minimum: title, author, publication date, content, and like count",
-			"Visitors can like posts (Like button) and this is saved",
-			"Unpublished posts can be visually distinguished from published posts",
-			"The post component fits visually with existing designs alongside user and product components",
-			"Posts can be fetched from the backend API and errors are handled gracefully",
+			"Blog posts can be displayed with at minimum: title, author, publication date, content, and like-count",
+			"Visitors can like posts (Like button) - the update doesn't need to go to a backend, only stored locally",
+			"Unpublished posts can be distinguished from published posts (e.g., via styling or badge)",
+			"The post component fits visually in the existing design alongside user and product components",
+			"Blog post data can be loaded from the mock system (src/mock/posts.ts)",
 			"Blog content works in both languages (Dutch and English)"
 		],
 		"mockData": "Test Data",
-		"mockDataDesc": "5 blog posts are available in src/mock/posts.ts for testing. These include posts in different states (published/unpublished) with varying engagement levels."
+		"mockDataDesc": "5 blog posts are available in src/mock/posts.ts for testing. They contain posts in different states (published/unpublished) with varying engagement levels. Note: you don't need to send updates back to a backend - everything is local."
 	},
 	"currentState": {
 		"title": "Current State: The Cards",

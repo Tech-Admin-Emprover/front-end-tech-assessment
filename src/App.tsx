@@ -33,13 +33,20 @@ const App = () => {
 				<section>
 					<h2>{t('userStory.title')}</h2>
 
-					<div style={{ marginBottom: '1.5rem', padding: '1rem', backgroundColor: '#f9f9f9', borderLeft: '4px solid #646cff' }}>
+					<div
+						style={{
+							marginBottom: '1.5rem',
+							padding: '1rem',
+							backgroundColor: '#f9f9f9',
+							borderLeft: '4px solid #646cff'
+						}}
+					>
 						<p style={{ margin: '0 0 0.5rem 0' }}>{t('userStory.businessContext')}</p>
 						<p style={{ margin: 0 }}>{t('userStory.overview')}</p>
 					</div>
 
 					<div style={{ marginBottom: '2rem' }}>
-						<h3>User Story</h3>
+						<h3>{t('userStory.userStoryLabel')}</h3>
 						<p>
 							<strong>{t('userStory.asA')}</strong> {t('userStory.iWantTo')}{' '}
 							<strong>{t('userStory.soThat')}</strong>
@@ -47,7 +54,7 @@ const App = () => {
 					</div>
 
 					<div style={{ marginBottom: '2rem' }}>
-						<h3>Why This Matters</h3>
+						<h3>{t('userStory.whyThisMattersLabel')}</h3>
 						<p style={{ whiteSpace: 'pre-wrap' }}>{t('userStory.whyThisMatters')}</p>
 					</div>
 
