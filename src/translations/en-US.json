@@ -34,76 +34,24 @@
 		]
 	},
 	"userStory": {
-		"title": "User Story: Create PostCard Component for TechStore",
-		"asA": "As a TechStore engineer",
-		"iWantTo": "I want to create a PostCard component that displays blog posts",
-		"soThat": "So that we can integrate blog content and prove our component library scales to all content types",
-		"acceptanceCriteria": "Acceptance Criteria",
-		"displayPostInfo": {
-			"title": "✅ Display Post Information",
-			"items": [
-				"**Title** (large, prominent) — Location: Card header/top — Example: 'Getting Started with React Hooks'",
-				"**Author** (secondary info) — Location: Card header, near title or below it — Example: 'by Sarah Chen'",
-				"**Publication Date** (formatted) — Location: Card header or metadata area — Format: Human-readable date (e.g., 'March 15, 2024')",
-				"**Content** (body) — Location: Card body/main area — Display: The full post content",
-				"**Likes Count** (engagement metric) — Location: Card footer or near likes — Format: Show number of likes (e.g., '456 likes')",
-				"**Publication Status** (optional visual indicator) — Location: Card header or badge area — Show: 'Published' badge only if published === true, otherwise visually distinct"
-			]
-		},
-		"interactivity": {
-			"title": "✅ Interactivity (Like Button)",
-			"items": [
-				"**Like Button** — Location: Card footer — Behavior: Click to increment likes count — API Call: PUT /api/posts/{id} with new likes count — Visual Feedback: Button should show updated like count after save"
-			]
-		},
-		"componentStructure": {
-			"title": "✅ Component Structure",
-			"items": [
-				"Use the shared Button component for the 'Like' action",
-				"Fetch post data from /api/posts/{postId} on mount",
-				"Handle loading and error states",
-				"Use the translation system for all user-facing text"
-			]
-		},
-		"layoutIntegration": {
-			"title": "✅ Layout Integration",
-			"items": [
-				"Should work seamlessly in ProductGrid or similar grid layout",
-				"Cards should be roughly equal height when displayed in grids (even with varying content lengths)",
-				"Should respect the shared Grid component's responsive behavior"
-			]
-		},
-		"mockDataAvailable": "Mock Data Available",
-		"mockDataDesc": "5 posts are available in src/mock/posts.ts:",
-		"mockDataTable": [
-			"ID: 1 | Title: Getting Started with React Hooks | Author: Sarah Chen | Published: ✓ | Likes: 324",
-			"ID: 2 | Title: Best Practices for Component Design | Author: Marco Rivera | Published: ✓ | Likes: 187",
-			"ID: 3 | Title: CSS Grid vs Flexbox: When to Use Each | Author: Elena Kowalski | Published: ✓ | Likes: 456",
-			"ID: 4 | Title: Testing React Components Effectively | Author: James Wilson | Published: ✓ | Likes: 92",
-			"ID: 5 | Title: The Future of Web Development | Author: Priya Patel | Published: ✗ | Likes: 0"
+		"title": "User Story: Blog Functionality for TechStore",
+		"businessContext": "TechStore's marketing team wants to use blog content as an SEO and engagement strategy. By publishing valuable tech tips and best practices, they expect to drive more organic traffic and increase session duration on the website.",
+		"overview": "We need to implement a blog post display component that fits into our existing component ecosystem (UserCard, ProductCard) so we can showcase blogs on homepages, sidebars, and dedicated blog pages.",
+		"asA": "As a marketer at TechStore",
+		"iWantTo": "I want to display blog posts with author, publication date, and engagement metrics (likes)",
+		"soThat": "So that visitors can discover blog content and interact with it, which helps with SEO and customer retention",
+		"whyThisMatters": "Blog content is a core part of our marketing funnel. It helps us:\n• Reach potential customers in the awareness stage\n• Build trust by demonstrating expertise\n• Improve SEO rankings through regular, valuable content\n• Stimulate community engagement through likes and comments",
+		"acceptanceCriteria": "Definition of Done",
+		"criteria": [
+			"Blog posts can be displayed with at minimum: title, author, publication date, content, and like count",
+			"Visitors can like posts (Like button) and this is saved",
+			"Unpublished posts can be visually distinguished from published posts",
+			"The post component fits visually with existing designs alongside user and product components",
+			"Posts can be fetched from the backend API and errors are handled gracefully",
+			"Blog content works in both languages (Dutch and English)"
 		],
-		"fileStructure": {
-			"title": "File Structure",
-			"path": "src/components/PostCard/",
-			"files": ["PostCard.tsx", "PostCard.test.tsx (optional, but recommended)"]
-		},
-		"componentProps": {
-			"title": "Component Props",
-			"definition": "interface PostCardProps { postId: number; }"
-		},
-		"suggestedLayout": "Suggested Card Layout",
-		"layoutDiagram": "┌─────────────────────────────────┐\n│ Title (prominent)               │\n│ by Author | Published Badge     │  ← Header\n├─────────────────────────────────┤\n│                                 │\n│ Post content/body text...       │  ← Body\n│ (can be multi-line)             │\n│                                 │\n├─────────────────────────────────┤\n│ 456 likes    [Like Button]      │  ← Footer/Actions\n└─────────────────────────────────┘",
-		"validationChecklist": "Validation",
-		"validationItems": [
-			"✅ It displays all post fields correctly",
-			"✅ The Like button increments the count and calls the API",
-			"✅ Loading and error states are handled",
-			"✅ It works alongside UserCard and ProductCard in the same grid layout",
-			"✅ Translations work for both Dutch and English",
-			"✅ Tests pass (if you write them)"
-		],
-		"validation": "How This Validates Your Refactoring",
-		"validationDesc": "Creating PostCard proves:\n\n1. **Reusability**: You can apply the same Button component to different entity types\n2. **Flexibility**: Different card types (User, Product, Post) all work together\n3. **Pattern Recognition**: You've identified what's common (structure, styling) vs. what's specific (data, business logic)\n\nThis is exactly what the shared Card component should enable—write once, use everywhere."
+		"mockData": "Test Data",
+		"mockDataDesc": "5 blog posts are available in src/mock/posts.ts for testing. These include posts in different states (published/unpublished) with varying engagement levels."
 	},
 	"currentState": {
 		"title": "Current State: The Cards",

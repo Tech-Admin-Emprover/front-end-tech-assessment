@@ -32,134 +32,40 @@ const App = () => {
 
 				<section>
 					<h2>{t('userStory.title')}</h2>
-					<p>
-						<strong>{t('userStory.asA')}</strong> {t('userStory.iWantTo')}{' '}
-						<strong>{t('userStory.soThat')}</strong>
-					</p>
 
-					<h3>{t('userStory.acceptanceCriteria')}</h3>
-
-					<div style={{ marginBottom: '2rem' }}>
-						<h4>{t('userStory.displayPostInfo.title')}</h4>
-						<ul>
-							{(
-								t('userStory.displayPostInfo.items', {
-									returnObjects: true
-								}) as string[]
-							).map((item: string, i: number) => (
-								<li key={i}>{item}</li>
-							))}
-						</ul>
+					<div style={{ marginBottom: '1.5rem', padding: '1rem', backgroundColor: '#f9f9f9', borderLeft: '4px solid #646cff' }}>
+						<p style={{ margin: '0 0 0.5rem 0' }}>{t('userStory.businessContext')}</p>
+						<p style={{ margin: 0 }}>{t('userStory.overview')}</p>
 					</div>
 
 					<div style={{ marginBottom: '2rem' }}>
-						<h4>{t('userStory.interactivity.title')}</h4>
-						<ul>
-							{(
-								t('userStory.interactivity.items', {
-									returnObjects: true
-								}) as string[]
-							).map((item: string, i: number) => (
-								<li key={i}>{item}</li>
-							))}
-						</ul>
+						<h3>User Story</h3>
+						<p>
+							<strong>{t('userStory.asA')}</strong> {t('userStory.iWantTo')}{' '}
+							<strong>{t('userStory.soThat')}</strong>
+						</p>
 					</div>
 
 					<div style={{ marginBottom: '2rem' }}>
-						<h4>{t('userStory.componentStructure.title')}</h4>
-						<ul>
-							{(
-								t('userStory.componentStructure.items', {
-									returnObjects: true
-								}) as string[]
-							).map((item: string, i: number) => (
-								<li key={i}>{item}</li>
-							))}
-						</ul>
+						<h3>Why This Matters</h3>
+						<p style={{ whiteSpace: 'pre-wrap' }}>{t('userStory.whyThisMatters')}</p>
 					</div>
 
 					<div style={{ marginBottom: '2rem' }}>
-						<h4>{t('userStory.layoutIntegration.title')}</h4>
+						<h3>{t('userStory.acceptanceCriteria')}</h3>
 						<ul>
-							{(
-								t('userStory.layoutIntegration.items', {
-									returnObjects: true
-								}) as string[]
-							).map((item: string, i: number) => (
-								<li key={i}>{item}</li>
-							))}
+							{(t('userStory.criteria', { returnObjects: true }) as string[]).map(
+								(criterion: string, i: number) => (
+									<li key={i}>{criterion}</li>
+								)
+							)}
 						</ul>
 					</div>
 
-					<div style={{ marginBottom: '2rem' }}>
-						<h4>{t('userStory.mockDataAvailable')}</h4>
+					<div>
+						<h3>{t('userStory.mockData')}</h3>
 						<p>{t('userStory.mockDataDesc')}</p>
-						<ul>
-							{(
-								t('userStory.mockDataTable', { returnObjects: true }) as string[]
-							).map((row: string, i: number) => (
-								<li key={i}>{row}</li>
-							))}
-						</ul>
 					</div>
-
-					<div style={{ marginBottom: '2rem' }}>
-						<h4>{t('userStory.fileStructure.title')}</h4>
-						<p>{t('userStory.fileStructure.path')}</p>
-						<ul>
-							{(
-								t('userStory.fileStructure.files', {
-									returnObjects: true
-								}) as string[]
-							).map((file: string, i: number) => (
-								<li key={i}>{file}</li>
-							))}
-						</ul>
-					</div>
-
-					<div style={{ marginBottom: '2rem' }}>
-						<h4>{t('userStory.componentProps.title')}</h4>
-						<code>{t('userStory.componentProps.definition')}</code>
-					</div>
-
-					<div style={{ marginBottom: '2rem' }}>
-						<h4>{t('userStory.suggestedLayout')}</h4>
-						<pre style={{ padding: '1rem', overflow: 'auto' }}>
-							{t('userStory.layoutDiagram')}
-						</pre>
-					</div>
-
-					<div style={{ marginBottom: '2rem' }}>
-						<h4>{t('userStory.validationChecklist')}</h4>
-						<ul>
-							{(
-								t('userStory.validationItems', { returnObjects: true }) as string[]
-							).map((item: string, i: number) => (
-								<li key={i}>{item}</li>
-							))}
-						</ul>
-					</div>
-
-					<div style={{ marginBottom: '2rem' }}>
-						<h4>{t('userStory.validation')}</h4>
-						<p style={{ whiteSpace: 'pre-wrap' }}>{t('userStory.validationDesc')}</p>
-					</div>
-				</section>
-
-				<section>
-					<h2>{t('challenge.tasksTitle')}</h2>
-					<ol>
-						{(
-							t('challenge.tasks', { returnObjects: true }) as Array<{
-								title: string;
-								description: string;
-							}>
-						).map((task, i: number) => (
-							<li key={i}>
-								<strong>{task.title}</strong> — {task.description}
-							</li>
-						))}
-					</ol>
 				</section>
 
 				<section>

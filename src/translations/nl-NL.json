@@ -34,76 +34,24 @@
 		]
 	},
 	"userStory": {
-		"title": "Gebruikersverhaal: PostCard Component voor TechStore",
-		"asA": "Als TechStore engineer",
-		"iWantTo": "Wil ik een PostCard component aanmaken die blog berichten displayt",
-		"soThat": "Zodat we blog content kunnen integreren en bewijzen dat onze component library schaalbaar is voor alle content types",
-		"acceptanceCriteria": "Acceptatiecriteria",
-		"displayPostInfo": {
-			"title": "✅ Berichtinformatie Weergeven",
-			"items": [
-				"**Titel** (groot, prominent) — Location: Card header/top — Voorbeeld: 'Getting Started with React Hooks'",
-				"**Auteur** (secundaire info) — Location: Card header, dicht bij titel of eronder — Voorbeeld: 'by Sarah Chen'",
-				"**Publicatiedatum** (geformateerd) — Location: Card header of metagegevens — Format: Menselijk leesbare datum (bijv. '15 maart 2024')",
-				"**Berichtinhoud** (body) — Location: Card body/hoofdgebied — Display: De volledige berichtinhoud",
-				"**Aantal likes** (betrokkenheids metric) — Location: Card footer of dicht bij likes — Format: Laat aantal likes zien (bijv. '456 likes')",
-				"**Publicatiestatus** (optionele visuele indicator) — Location: Card header of badge — Show: 'Published' badge alleen als published === true, anders visueel onderscheiden"
-			]
-		},
-		"interactivity": {
-			"title": "✅ Interactiviteit (Like Button)",
-			"items": [
-				"**Like Button** — Locatie: Card footer — Gedrag: Klik om likes aantal te verhogen — API Call: PUT /api/posts/{id} met nieuw likes aantal — Visuele feedback: Button moet bijgewerkt likes aantal weergeven"
-			]
-		},
-		"componentStructure": {
-			"title": "✅ Component Structuur",
-			"items": [
-				"Gebruik de gedeelde Button component voor de 'Like' actie",
-				"Haal berichtdata op van /api/posts/{postId} bij mount",
-				"Behandel laad- en foutstaten",
-				"Gebruik het vertaalsysteem voor alle gebruikersgerichte tekst"
-			]
-		},
-		"layoutIntegration": {
-			"title": "✅ Layout Integratie",
-			"items": [
-				"Werkt naadloos in ProductGrid of soortgelijk roosterlay-out",
-				"Cards hebben ruwweg gelijke hoogte bij weergave in roosters (zelfs met variërende inhoudslengtes)",
-				"Respecteert het gedeelde Grid component's responsief gedrag"
-			]
-		},
-		"mockDataAvailable": "Mock Gegevens Beschikbaar",
-		"mockDataDesc": "5 berichten zijn beschikbaar in src/mock/posts.ts:",
-		"mockDataTable": [
-			"ID: 1 | Titel: Getting Started with React Hooks | Auteur: Sarah Chen | Gepubliceerd: ✓ | Likes: 324",
-			"ID: 2 | Titel: Best Practices for Component Design | Auteur: Marco Rivera | Gepubliceerd: ✓ | Likes: 187",
-			"ID: 3 | Titel: CSS Grid vs Flexbox: When to Use Each | Auteur: Elena Kowalski | Gepubliceerd: ✓ | Likes: 456",
-			"ID: 4 | Titel: Testing React Components Effectively | Auteur: James Wilson | Gepubliceerd: ✓ | Likes: 92",
-			"ID: 5 | Titel: The Future of Web Development | Auteur: Priya Patel | Gepubliceerd: ✗ | Likes: 0"
+		"title": "Gebruikersverhaal: Blog Functionaliteit voor TechStore",
+		"businessContext": "TechStore's marketingteam wil blog content gebruiken als een SEO- en engagement-strategie. Door waardevolle tech tips en best practices te publiceren, verwachten ze meer organisch verkeer en langere sessieduur op de website.",
+		"overview": "We moeten een blog post weergavecomponent implementeren die past in ons bestaande component ecosystem (UserCard, ProductCard) zodat we blogs kunnen tonen op homepages, zijbalken en dedicated blog pagina's.",
+		"asA": "Als marketeer bij TechStore",
+		"iWantTo": "Wil ik blog posts kunnen weergeven met auteur, publicatiedatum en engagement metrics (likes)",
+		"soThat": "Zodat bezoekers blog content kunnen ontdekken en ermee kunnen interageren, wat helpt bij SEO en customer retention",
+		"whyThisMatters": "Blog content is een kernonderdeel van onze marketing funnel. Het helpt ons om:\n• Potentiële klanten in de awareness fase te bereiken\n• Vertrouwen op te bouwen door expertise te tonen\n• SEO-ranking te verbeteren via geregelde, waardevolle content\n• Community engagement te stimuleren via likes en comments",
+		"acceptanceCriteria": "Criteria voor Afronding",
+		"criteria": [
+			"Blog posts kunnen worden weergegeven met minimaal: titel, auteur, publicatiedatum, inhoud en like-count",
+			"Bezoekers kunnen posts leuk vinden (Like button) en dit wordt opgeslagen",
+			"Niet-gepubliceerde posts kunnen worden onderscheiden van gepubliceerde posts",
+			"De post component past visueel in de bestaande design samen met user en product components",
+			"Posts kunnen worden opgehaald van de backend API en errors worden netjes afgehandeld",
+			"Blog content werkt in beide talen (Nederlands en Engels)"
 		],
-		"fileStructure": {
-			"title": "Bestandsstructuur",
-			"path": "src/components/PostCard/",
-			"files": ["PostCard.tsx", "PostCard.test.tsx (optioneel, maar aanbevolen)"]
-		},
-		"componentProps": {
-			"title": "Component Props",
-			"definition": "interface PostCardProps { postId: number; }"
-		},
-		"suggestedLayout": "Voorgestelde Card Layout",
-		"layoutDiagram": "┌─────────────────────────────────┐\n│ Titel (prominent)               │\n│ by Auteur | Gepubliceerd Badge  │  ← Header\n├─────────────────────────────────┤\n│                                 │\n│ Berichtinhoud/body tekst...     │  ← Body\n│ (kan meerdere regels zijn)      │\n│                                 │\n├─────────────────────────────────┤\n│ 456 likes    [Like Button]      │  ← Footer/Acties\n└─────────────────────────────────┘",
-		"validationChecklist": "Validatie",
-		"validationItems": [
-			"✅ Het geeft alle berichtvelden correct weer",
-			"✅ De Like button verhoogt het aantal en roept de API aan",
-			"✅ Laad- en foutstaten worden afgehandeld",
-			"✅ Het werkt samen met UserCard en ProductCard in dezelfde roosterlay-out",
-			"✅ Vertalingen werken voor zowel Nederlands als Engels",
-			"✅ Tests slagen (als je ze schrijft)"
-		],
-		"validation": "Hoe Dit Je Refactoring Valideert",
-		"validationDesc": "Het maken van PostCard bewijst:\n\n1. **Herbruikbaarheid**: Je kunt dezelfde Button component op verschillende entity types toepassen\n2. **Flexibiliteit**: Verschillende kaarttypen (User, Product, Post) werken samen\n3. **Patroonherkenning**: Je hebt vastgesteld wat gemeenschappelijk is (structuur, ontwerp) versus wat specifiek is (gegevens, bedrijfslogica)\n\nDit is precies wat de gedeelde Card component zou moeten inschakelen—schrijf eenmaal, gebruik overal."
+		"mockData": "Test Data",
+		"mockDataDesc": "5 blog posts zijn beschikbaar in src/mock/posts.ts om mee te testen. Deze bevat posts in verschillende staten (gepubliceerd/ongepubliceerd) en met variërende engagement."
 	},
 	"currentState": {
 		"title": "Huidige Staat: De Kaarten",
