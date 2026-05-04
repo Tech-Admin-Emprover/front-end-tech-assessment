@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../shared/Button/Button';
+import { User } from '../../shared/types';
 import '../../shared/Button/Button.css';
 
 /**
@@ -13,14 +14,6 @@ import '../../shared/Button/Button.css';
  * 4. Statusbeheer, gegevensophaling en UI allemaal in één component
  * 5. Moeilijk om afhankelijkheden voor testen na te bootsen
  */
-
-interface User {
-	id: number;
-	name: string;
-	email: string;
-	role: 'admin' | 'user';
-	createdAt: string;
-}
 
 export const UserCard: React.FC<{ userId: number }> = ({ userId }) => {
 	const { t } = useTranslation();

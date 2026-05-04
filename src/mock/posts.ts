@@ -3,15 +3,7 @@
  * Used for development and testing without a real API
  */
 
-export interface Post {
-	id: number;
-	title: string;
-	content: string;
-	author: string;
-	publishedAt: string;
-	likes: number;
-	published: boolean;
-}
+import { Post } from '../shared/types';
 
 export const MOCK_POSTS: Record<number, Post> = {
 	1: {

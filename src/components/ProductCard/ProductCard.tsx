@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../shared/Button/Button';
+import { Product } from '../../shared/types';
 import '../../shared/Button/Button.css';
 
 /**
@@ -13,15 +14,6 @@ import '../../shared/Button/Button.css';
  * 4. Ander bewerkingsschema (voorraadhoeveelheid in plaats van naam)
  * 5. Inconsistente styling-benadering - dit is het probleem dat u zult oplossen
  */
-
-interface Product {
-	id: number;
-	name: string;
-	price: number;
-	stock: number;
-	category: string;
-	description: string;
-}
 
 export const ProductCard: React.FC<{ productId: number }> = ({ productId }) => {
 	const { t } = useTranslation();
@@ -109,9 +101,7 @@ export const ProductCard: React.FC<{ productId: number }> = ({ productId }) => {
 					<span
 						className={`product-card__stock ${isInStock ? 'product-card__stock--available' : 'product-card__stock--sold-out'}`}
 					>
-						{isInStock
-							? `${product.stock} ${t('productCard.inStock')}`
-							: t('productCard.soldOut')}
+						{isInStock ? t('productCard.inStock') : t('productCard.soldOut')}
 					</span>
 				</div>
 			</div>

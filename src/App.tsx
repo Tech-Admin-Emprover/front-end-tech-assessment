@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { UserCard } from './components/UserCard/UserCard';
-import { ProductCard } from './components/ProductCard/ProductCard';
+import { MixedGrid } from './components/MixedGrid/MixedGrid';
 import { UserGrid } from './components/UserGrid/UserGrid';
 import { ProductGrid } from './components/ProductGrid/ProductGrid';
 import './App.css';
@@ -17,64 +16,40 @@ const App = () => {
 
 			<main className="main">
 				<section>
-					<h2>{t('challenge.title')}</h2>
-					<p>{t('challenge.description')}</p>
+					<h2>{t('userStory.title')}</h2>
 
-					<h3>{t('challenge.problem')}</h3>
+					<p>{t('userStory.businessContext')}</p>
+					<p>{t('userStory.overview')}</p>
+
+					<h3>{t('userStory.whyThisMattersLabel')}</h3>
 					<ul>
-						{(t('challenge.problemItems', { returnObjects: true }) as string[]).map(
+						{(t('userStory.whyThisMatters', { returnObjects: true }) as string[]).map(
 							(item: string, i: number) => (
 								<li key={i}>{item}</li>
 							)
 						)}
 					</ul>
+
+					<h3>{t('userStory.acceptanceCriteria')}</h3>
+					<ul>
+						{(t('userStory.criteria', { returnObjects: true }) as string[]).map(
+							(criterion: string, i: number) => (
+								<li key={i}>{criterion}</li>
+							)
+						)}
+					</ul>
+
+					<h3>{t('userStory.mockData')}</h3>
+					<p>{t('userStory.mockDataDesc')}</p>
+
+					<h3>{t('userStory.devToolsNote')}</h3>
+					<p>{t('userStory.devToolsDesc')}</p>
+
+					<h3>{t('userStory.noteTitle')}</h3>
+					<p>{t('userStory.noteDesc1')}</p>
+					<p>{t('userStory.noteDesc2')}</p>
+					<p>{t('userStory.noteDesc3')}</p>
 				</section>
-
-				<section>
-					<h2>{t('userStory.title')}</h2>
-
-					<div
-						style={{
-							marginBottom: '1.5rem',
-							padding: '1rem',
-							backgroundColor: '#f9f9f9',
-							borderLeft: '4px solid #646cff'
-						}}
-					>
-						<p style={{ margin: '0 0 0.5rem 0' }}>{t('userStory.businessContext')}</p>
-						<p style={{ margin: 0 }}>{t('userStory.overview')}</p>
-					</div>
-
-					<div style={{ marginBottom: '2rem' }}>
-						<h3>{t('userStory.userStoryLabel')}</h3>
-						<p>
-							<strong>{t('userStory.asA')}</strong> {t('userStory.iWantTo')}{' '}
-							<strong>{t('userStory.soThat')}</strong>
-						</p>
-					</div>
-
-					<div style={{ marginBottom: '2rem' }}>
-						<h3>{t('userStory.whyThisMattersLabel')}</h3>
-						<p style={{ whiteSpace: 'pre-wrap' }}>{t('userStory.whyThisMatters')}</p>
-					</div>
-
-					<div style={{ marginBottom: '2rem' }}>
-						<h3>{t('userStory.acceptanceCriteria')}</h3>
-						<ul>
-							{(t('userStory.criteria', { returnObjects: true }) as string[]).map(
-								(criterion: string, i: number) => (
-									<li key={i}>{criterion}</li>
-								)
-							)}
-						</ul>
-					</div>
-
-					<div>
-						<h3>{t('userStory.mockData')}</h3>
-						<p>{t('userStory.mockDataDesc')}</p>
-					</div>
-				</section>
-
 				<section>
 					<h2>{t('bonusChallenges.title')}</h2>
 					<p>{t('bonusChallenges.subtitle')}</p>
@@ -111,32 +86,11 @@ const App = () => {
 						))}
 					</div>
 				</section>
-
 				<section>
-					<h2>{t('currentState.title')}</h2>
-					<p>{t('currentState.description')}</p>
-
-					<div className="cards-grid">
-						<div className="card-example">
-							<h3>{t('currentState.userCard')}</h3>
-							<p className="card-note">{t('currentState.userCardNote')}</p>
-							<UserCard userId={1} />
-						</div>
-
-						<div className="card-example">
-							<h3>{t('currentState.productCard')}</h3>
-							<p className="card-note">{t('currentState.productCardNote')}</p>
-							<ProductCard productId={1} />
-						</div>
-
-						<div className="card-example">
-							<h3>{t('currentState.postCard')}</h3>
-							<p className="card-note">{t('currentState.postCardNote')}</p>
-							<div className="placeholder">{t('currentState.placeholder')}</div>
-						</div>
-					</div>
+					<h2>{t('mixedGrid.title')}</h2>
+					<p>{t('mixedGrid.description')}</p>
+					<MixedGrid />
 				</section>
-
 				<section>
 					<h2>{t('dataGlance.title')}</h2>
 					<p>{t('dataGlance.description')}</p>

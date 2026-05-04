@@ -1,6 +1,6 @@
 {
 	"header": {
-		"title": "Card Component Unificatie Beoordeling",
+		"title": "Technische Beoordeling",
 		"subtitle": "Ontdek de noodzaak voor gedeelde componenten door praktische refactoring"
 	},
 	"challenge": {
@@ -40,20 +40,30 @@
 		"overview": "We moeten een blogpost weergavecomponent implementeren die past in ons bestaande component ecosystem (UserCard, ProductCard) zodat we blogs kunnen tonen op homepages, zijbalken en dedicated blogpagina's.",
 		"asA": "Als marketeer bij TechStore",
 		"iWantTo": "wil ik blogposts kunnen weergeven met auteur, publicatiedatum en engagement metrics (likes)",
-		"soThat": "zodat bezoekers blog content kunnen ontdekken en ermee kunnen interageren, wat helpt bij SEO en customer retention",
+		"soThat": "zodat bezoekers blog content kunnen ontdekken en ermee kunnen interacteren, wat helpt bij SEO en klantbehoud.",
 		"whyThisMattersLabel": "Waarom Dit Belangrijk Is",
-		"whyThisMatters": "Blog content is een kernonderdeel van onze marketing funnel. Het helpt ons om:\n• Potentiële klanten in de awareness fase te bereiken\n• Vertrouwen op te bouwen door expertise te tonen\n• SEO-ranking te verbeteren via geregelde, waardevolle content\n• Community engagement te stimuleren via likes en comments",
+		"whyThisMatters": [
+			"Potentiële klanten in de awareness fase bereiken",
+			"Vertrouwen op te bouwen door expertise te tonen",
+			"SEO-ranking te verbeteren via geregelde, waardevolle content",
+			"Community engagement te stimuleren via likes en comments"
+		],
 		"acceptanceCriteria": "Acceptatiecriteria",
 		"criteria": [
 			"Blogposts kunnen worden weergegeven met minimaal: titel, auteur, publicatiedatum, inhoud en like-count",
 			"Bezoekers kunnen posts leuk vinden (Like button) - de update hoeft niet naar een backend te gaan, alleen lokaal opgeslagen worden",
 			"Niet-gepubliceerde posts kunnen worden onderscheiden van gepubliceerde posts (bijv. via styling of badge)",
 			"De post component past visueel in het bestaande design samen met user en product components",
-			"Blogpost data kan worden geladen uit het mock systeem (src/mock/posts.ts)",
-			"Blog content werkt in beide talen (Nederlands en Engels)"
+			"Blogpost data kan worden geladen uit het mock systeem (src/mock/posts.ts)"
 		],
 		"mockData": "Test Data",
-		"mockDataDesc": "5 blogposts zijn beschikbaar in src/mock/posts.ts om mee te testen. Deze bevat posts in verschillende staten (gepubliceerd/ongepubliceerd) en met variërende engagement niveaus. Opmerking: je hoeft geen updates terug te sturen naar de backend - alles is lokaal."
+		"mockDataDesc": "5 blogposts zijn beschikbaar in src/mock/posts.ts om mee te testen. Deze bevat posts in verschillende staten (gepubliceerd/ongepubliceerd) en met variërende engagement niveaus.",
+		"devToolsNote": "Developer Tools",
+		"devToolsDesc": "Opmerking: je hoeft geen updates terug te sturen naar de backend - alles is lokaal. Alle API-verzoeken worden geregistreerd in de developer console met human-readable berichten (bijv. \"Edited User 'Jane Doe'\") om je te helpen debuggen.",
+		"noteTitle": "Opmerking",
+		"noteDesc1": "Ik weet dat het een grote opdracht is, dus voel je vrij om prioriteiten te stellen en aan de belangrijkste taken te werken. Ik verwacht niet dat je de hele opdracht af krijgt in de gegeven tijd. De bonus uitdagingen zijn er voor als je extra tijd hebt en je wilt onderscheiden met extra stijl verbeteringen.",
+		"noteDesc2": "Ik wil voornamelijk vaststellen wat voor aanpak je kiest om een nieuw component te maken waarvan al soortgelijke varianten bestaan. Probeer te denken aan het schalen van deze oplossing in de toekomst - stel je voor dat er 10 verschillende kaart types zijn, hoe zou je deze aanpak dan aanpassen? Hoe zou je ervoor zorgen dat toekomstige kaarten ook gemakkelijk kunnen worden toegevoegd zonder veel code duplicatie of onderhoudsproblemen?",
+		"noteDesc3": "Kleine tip, maak een herbruikbaar component dat de basisstructuur van een kaart definieert (bijv. header, body, footer) en laat specifieke kaarten deze component gebruiken en hun eigen content erin te injecteren. Dit is een veelgebruikte aanpak in component-gebaseerde UI ontwikkeling om herbruikbaarheid en onderhoudbaarheid te verbeteren."
 	},
 	"currentState": {
 		"title": "Huidige Staat: De Kaarten",
@@ -64,7 +74,7 @@
 		"productCardNote": "Andere klassenaming, ander grens en afstand benadering",
 		"postCard": "PostCard (Nog aan te maken)",
 		"postCardNote": "Welke stijl zou dit moeten hebben?",
-		"placeholder": "Je moet deze component nog maken"
+		"placeholder": "Je moet deze component nog maken, render hier het nieuwe component"
 	},
 	"dataGlance": {
 		"title": "Alle gegevens in één Oogopslag",
@@ -163,6 +173,10 @@
 		"save": "Opslaan",
 		"cancel": "Annuleren",
 		"editStock": "Voorraad Bewerken"
+	},
+	"mixedGrid": {
+		"title": "Gemengde Kaarten Grid",
+		"description": "Hieronder zijn alle drie kaart types gemengd in één grid."
 	},
 	"bonusChallenges": {
 		"title": "Bonus Uitdagingen",

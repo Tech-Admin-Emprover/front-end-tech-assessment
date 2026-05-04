@@ -41,7 +41,11 @@ describe('ProductCard (Before Refactoring)', () => {
 		// Verify product data is displayed
 		expect(screen.getByText('Electronics')).toBeInTheDocument();
 		expect(screen.getByText('$79.99')).toBeInTheDocument();
-		expect(screen.getByText(/15 in voorraad/)).toBeInTheDocument();
+		expect(screen.getByText('in voorraad')).toBeInTheDocument();
+		const stockDisplay = screen
+			.getByTestId('product-card')
+			.querySelector('.product-card__stock-display');
+		expect(stockDisplay).toHaveTextContent('15');
 		expect(screen.getByText('High-quality wireless headphones')).toBeInTheDocument();
 	});
 
