@@ -91,33 +91,33 @@ const App = () => {
 					<p>{t('mixedGrid.description')}</p>
 					<MixedGrid />
 				</section>
-			<section>
-				<h2>{t('dataGlance.title')}</h2>
-				<p>{t('dataGlance.description')}</p>
-				<UserGrid />
-				<ProductGrid />
-			</section>
-			<section>
-				<h2>{t('portfolio.title')}</h2>
-				<p>{t('portfolio.description')}</p>
-				
-				<ol>
-					{(t('portfolio.steps', { returnObjects: true }) as string[]).map(
-						(step: string, i: number) => (
-							<li key={i}>{step}</li>
-						)
-					)}
-				</ol>
+				<section>
+					<h2>{t('dataGlance.title')}</h2>
+					<p>{t('dataGlance.description')}</p>
+					<UserGrid />
+					<ProductGrid />
+				</section>
+				<section>
+					<h2>{t('portfolio.title')}</h2>
+					<p>{t('portfolio.description')}</p>
 
-				<p>
-					<strong>{t('portfolio.benefit')}</strong>
-				</p>
-				<p className="portfolio-note">
-					<em>{t('portfolio.note')}</em>
-				</p>
-			</section>
-		</main>
-	</div>
+					<ol>
+						{(t('portfolio.steps', { returnObjects: true }) as string[]).map(
+							(step: string, i: number) => (
+								<li key={i}>{step}</li>
+							)
+						)}
+					</ol>
+
+					<p>
+						<strong>{t('portfolio.benefit')}</strong>
+					</p>
+					<p className="portfolio-note">
+						<em>{t('portfolio.note')}</em>
+					</p>
+				</section>
+			</main>
+		</div>
 	);
 };
 
